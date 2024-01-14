@@ -1,0 +1,11 @@
+.btnList {
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.btn {
+  font-size: 20px;
+  font-weight: bold;
+}

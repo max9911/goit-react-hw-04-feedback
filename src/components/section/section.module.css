@@ -1,0 +1,13 @@
+h2 {
+  font-size: 40px;
+}
+
+.container {
+  max-width: 50%;
+  background-color: beige;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
