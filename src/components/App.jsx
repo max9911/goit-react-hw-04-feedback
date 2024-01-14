@@ -1,37 +1,31 @@
-import React, { Component } from 'react';
 import { Section } from './section/section';
 import Feedback from './feedback/feedback';
 import Stats from './stats/stats';
+import { useState } from 'react';
 
-class App extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
+const App = () => {
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
+  const data = { good, neutral, bad };
 
-  oneClick = evt => {
+  const oneClick = evt => {
     const id = evt.target.id;
-    this.setState(prev => ({
-      [id]: prev[id] + 1,
-    }));
+    id === 'good' && setGood(prev => prev + 1);
+    id === 'neutral' && setNeutral(prev => prev + 1);
+    id === 'bad' && setBad(prev => prev + 1);
   };
 
-  render() {
-    return (
-      <>
-        <Section title="Please leave feedback">
-          <Feedback
-            oneClick={this.oneClick}
-            options={Object.keys(this.state)}
-          />
-        </Section>
-        <Section title="Statistics">
-          <Stats data={this.state} />
-        </Section>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <Section title="Please leave feedback">
+        <Feedback oneClick={oneClick} options={Object.keys(data)} />
+      </Section>
+      <Section title="Statistics">
+        <Stats data={data} />
+      </Section>
+    </>
+  );
+};
 
 export default App;
